@@ -1,5 +1,5 @@
 Docker for Anax (dev)
-====================
+-------------------
 
 Docker images for running, testing and developing Anax and Anax sites.
 
@@ -7,11 +7,30 @@ Anax is a PHP framework. It resides in the [Canax organisation on GitHub](https:
 
 
 
+Supported tags and respective Dockerfile links
+-------------------
+
+* [`php71-apache` (php71/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php71/apache/Dockerfile)
+* [`php70-apache` (php70/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php70/apache/Dockerfile)
+* [`php56-apache` (php56/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php56/apache/Dockerfile)
+
+
+
 Quick reference
 -------------------
 
 * Where to get help:
-    [GitHub organisation Docker repo issues]()
+    https://github.com/canax/docker/issues
+
+* Where to file issues:
+    https://github.com/canax/docker/issues
+
+* Maintained by:
+    [Canax organisation and community](https://github.com/canax/docker/issues)
+
+* Source of this description:
+    [README-docker-anax-dev.md](https://github.com/canax/docker/blob/master/README-docker-anax-dev.md)
+
 
 
 How to use this image
