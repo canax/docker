@@ -65,7 +65,7 @@ Create a directory `log` where apache will write its logs.
 Start the container in the background.
 
 ```text
-docker-compose up website -d
+docker-compose up -d website
 ```
 
 Open a browser to localhost:8080.
