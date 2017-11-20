@@ -32,12 +32,23 @@ RUN { \
 		echo 'opcache.enable_cli=1'; \
 	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
+# Make w workdir where to store the files
+RUN mkdir -p /app
+WORKDIR /app
+
 # Get php.info for debugging
 #RUN echo '<?php phpinfo();' > /var/www/html/phpinfo.php
 
 # Add composer
 #COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Make w workdir where to store the files
-RUN mkdir -p /app
-WORKDIR /app
+# Set Timezone for PHP
+ENV TZ=Europe/Stockholm
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+ 	&& echo $TZ > /etc/timezone
+RUN echo "date.timezone = $TZ" > /usr/local/etc/php/conf.d/timezone.ini
+
+# Avoid warning from Apache on
+# Could not reliably determine the server's fully qualified domain name,
+RUN echo "ServerName localhost" > /etc/apache2/conf-available/fqdn.conf \
+	&& a2enconf fqdn

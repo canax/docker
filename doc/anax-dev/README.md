@@ -10,9 +10,9 @@ Anax is a PHP framework. It resides in the [Canax organisation on GitHub](https:
 Supported tags and respective Dockerfile links
 -------------------
 
-* [`php71-apache`, `latest` (php71/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php71/apache/Dockerfile)
-* [`php70-apache` (php70/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php70/apache/Dockerfile)
-* [`php56-apache` (php56/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php56/apache/Dockerfile)
+* [`php71-apache`, `php71`, `latest` (php71/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php71/apache/Dockerfile)
+* [`php70-apache`, `php70` (php70/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php70/apache/Dockerfile)
+* [`php56-apache`, `php56` (php56/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php56/apache/Dockerfile)
 
 
 

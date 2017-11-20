@@ -56,12 +56,15 @@ build:
 	#$(D) build --file php72/apache/Dockerfile --tag anax/php72-apache:latest php72/apache
 	$(D) build --file php71/apache/Dockerfile  \
 		--tag anax/dev:latest                  \
+		--tag anax/dev:php71                   \
 		--tag anax/dev:php71-apache            \
 		php71/apache
 	$(D) build --file php70/apache/Dockerfile  \
+		--tag anax/dev:php70                   \
 		--tag anax/dev:php70-apache            \
 		php70/apache
 	$(D) build --file php56/apache/Dockerfile  \
+		--tag anax/dev:php56                   \
 		--tag anax/dev:php56-apache            \
 		php56/apache
  
