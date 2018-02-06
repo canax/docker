@@ -29,7 +29,7 @@ Quick reference
     [Canax organisation and community](https://github.com/canax/docker/issues)
 
 * Source of this description:
-    [README-docker-anax-dev.md](https://github.com/canax/docker/blob/master/README-docker-anax-dev.md)
+    [doc/anax-dev/README.md](https://github.com/canax/docker/blob/master/doc/anax-dev/README.md)
 
 
 
