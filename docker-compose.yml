@@ -1,30 +1,30 @@
 version: "3"
 services:
     php72-apache:
-        image: anax/php72-apache:latest
+        image: anax/dev:php72-apache
         ports:
-            - "8080:80"
+            - "10072:80"
         #volumes:
             #- .:/app
             #- ./config/docker/dbwebb.se.conf:/etc/apache2/sites-enabled/000-default.conf
     php71-apache:
-        image: anax/php71-apache:latest
+        image: anax/dev:php71-apache
         ports:
-            - "8080:80"
+            - "10071:80"
         #volumes:
             #- .:/app
             #- ./config/docker/dbwebb.se.conf:/etc/apache2/sites-enabled/000-default.conf
     php70-apache:
-        image: anax/php70-apache:latest
+        image: anax/dev:php70-apache
         ports:
-            - "8080:80"
+            - "10070:80"
         #volumes:
             #- .:/app
             #- ./config/docker/dbwebb.se.conf:/etc/apache2/sites-enabled/000-default.conf
     php56-apache:
-        image: anax/php56-apache:latest
+        image: anax/dev:php56-apache
         ports:
-            - "8080:80"
+            - "10056:80"
         #volumes:
             #- .:/app
             #- ./config/docker/dbwebb.se.conf:/etc/apache2/sites-enabled/000-default.conf

@@ -53,9 +53,12 @@ DC := docker-compose
 build:
 	@$(call HELPTEXT,$@)
 	#--no-cache=true 
-	#$(D) build --file php72/apache/Dockerfile --tag anax/php72-apache:latest php72/apache
-	$(D) build --file php71/apache/Dockerfile  \
+	$(D) build --file php72/apache/Dockerfile  \
 		--tag anax/dev:latest                  \
+		--tag anax/dev:php72                   \
+		--tag anax/dev:php72-apache            \
+		php72/apache
+	$(D) build --file php71/apache/Dockerfile  \
 		--tag anax/dev:php71                   \
 		--tag anax/dev:php71-apache            \
 		php71/apache
@@ -74,7 +77,12 @@ build:
 .PHONY: push
 push:
 	@$(call HELPTEXT,$@)
-	#$(D) push anax/php72-apache
+	$(D) push anax/dev:latest
+	$(D) push anax/dev:php72
+	$(D) push anax/dev:php72-apache
+	$(D) push anax/dev:php71
 	$(D) push anax/dev:php71-apache
+	$(D) push anax/dev:php70
 	$(D) push anax/dev:php70-apache
+	$(D) push anax/dev:php56
 	$(D) push anax/dev:php56-apache
