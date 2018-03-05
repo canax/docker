@@ -1,0 +1,16 @@
+
+
+
+#
+# Make workdir where to store the files
+#
+ARG workdir=/home/anax/repo
+ARG localUser=anax
+RUN useradd --create-home --shell /bin/bash $localUser \
+	&& mkdir -p $workdir \
+	&& chown $localUser $workdir \
+	&& adduser $localUser sudo \
+	&& echo "$localUser ALL=NOPASSWD: ALL" > /etc/sudoers.d/$localUser
+USER $localUser
+WORKDIR $workdir
+#COPY default ./

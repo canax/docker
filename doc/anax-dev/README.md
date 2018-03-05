@@ -10,10 +10,14 @@ Anax is a PHP framework. It resides in the [Canax organisation on GitHub](https:
 Supported tags and respective Dockerfile links
 -------------------
 
-* [`php72-apache`, `php72`, `latest` (php72/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile)
-* [`php71-apache`, `php71` (php71/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php71/apache/Dockerfile)
-* [`php70-apache`, `php70` (php70/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php70/apache/Dockerfile)
-* [`php56-apache`, `php56` (php56/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php56/apache/Dockerfile)
+* [`php72-cli`, `php72`, `latest-cli`, `latest` (php72/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php72/cli/Dockerfile)
+* [`php71-cli`, `php71` (php71/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php71/cli/Dockerfile)
+* [`php70-cli`, `php70` (php70/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php70/cli/Dockerfile)
+* [`php56-cli`, `php56` (php56/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php56/cli/Dockerfile)
+* [`php72-apache`, `latest-apache` (php72/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile)
+* [`php71-apache`, (php71/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php71/apache/Dockerfile)
+* [`php70-apache`, (php70/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php70/apache/Dockerfile)
+* [`php56-apache`, (php56/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php56/apache/Dockerfile)
 
 
 
@@ -37,50 +41,89 @@ Quick reference
 How to use this image
 -------------------
 
+The images are for test and development of Anax and Anax modules.
+
+
+
+### General usage and setup
+
+The cli-images uses a user `anax` and the apache-images uses root.
+
+The files are stored in `/home/anax` and you mount the current directory to `/home/anax/repo`.
+
+The apache document root points at `/home/anax/repo`, using the default apache virtual host.
+
 
 
 ### With docker-compose
 
-Create a `docker-compose.yml` with a service "website" using this image.
+Create a `docker-compose.yml` with services for all variants.
 
 ```text
 version: "3"
 services:
-    website:
-        image: anax/dev
-        ports:
-            - "8080:80"
-        volumes:
-            - .:/app
-            - ./config/dbwebb.se.conf:/etc/apache2/sites-enabled/000-default.conf
+    php72: &latest
+        image: anax/dev:php72
+        volumes: [ ".:/home/anax/repo" ]
+
+    php72-apache: &latest-apache
+        image: anax/dev:php72-apache
+        ports: [ "10072:80" ]
+        volumes: [ ".:/home/anax/repo" ]
+
+    php71:
+        image: anax/dev:php71
+        volumes: [ ".:/home/anax/repo" ]
+
+    php71-apache: 
+        image: anax/dev:php71-apache
+        ports: [ "10071:80" ]
+        volumes: [ ".:/home/anax/repo" ]
+
+    php70:
+        image: anax/dev:php70
+        volumes: [ ".:/home/anax/repo" ]
+
+    php70:
+        image: anax/dev:php70-apache
+        ports: [ "10070:80" ]
+        volumes: [ ".:/home/anax/repo" ]
+
+    php56:
+        image: anax/dev:php56
+        volumes: [ ".:/home/anax/repo" ]
+
+    php56:
+        image: anax/dev:php56-apache
+        ports: [ "10056:80" ]
+        volumes: [ ".:/home/anax/repo" ]
+
+    latest:
+        <<: *latest
+
+    latest-apache:
+        <<: *latest-apache
+        ports: [ "10080:80" ]
 ```
 
-Use a volume to mount your project directory into the image.
-
-Use a volume to provide a apache virtual host as a base for the default host in the webserver.
-
-The virtual host can/should point out the document root to use. Usually this is `./htdocs` for Anax, or `/app/htdocs` within the container.
-
-Create a directory `log` where apache will write its logs.
-
-Start the container in the background.
+Start an apache container in the background.
 
 ```text
-docker-compose up -d website
+docker-compose up -d latest-apache
 ```
 
-Open a browser to localhost:8080.
+You can then open a browser to localhost:10080.
 
-Run a bash terminal on the container.
+Run a bash terminal on the running container.
 
 ```text
-docker-compose exec website bash
+docker-compose exec latest-apache bash
 ```
 
 Shut down the container.
 
 ```text
-docker-compose down website
+docker-compose down latest-apache
 ```
 
 

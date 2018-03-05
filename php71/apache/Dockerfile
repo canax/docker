@@ -1,14 +1,12 @@
 #
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "make update / update.bash"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+#
 # Use something as base image
 #
 FROM php:7.1-apache
-
-
-
-#
-# Enable apache modules
-#
-RUN a2enmod rewrite expires cgi setenvif
 
 
 
@@ -32,7 +30,13 @@ RUN set -ex; \
 		opcache \
 		pdo_mysql \
 		pdo_sqlite \
+		zip \
 	; \
+	\
+	RUN yes | pecl install xdebug \
+	    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
+	    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
+	    && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
 	\
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
 	apt-mark auto '.*' > /dev/null; \
@@ -66,39 +70,30 @@ RUN { \
 
 
 #
-# Setup Apache
+# Enable apache modules
 #
-# Configure Apache using virtual host
+RUN a2enmod rewrite expires cgi setenvif
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
-
-
-
-#
-# Set Timezone for PHP
-#
-#ENV TZ=Europe/Stockholm
-#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-# 	&& echo $TZ > /etc/timezone
-#RUN echo "date.timezone = $TZ" > /usr/local/etc/php/conf.d/timezone.ini
-
-
-
-#
-# Get php.info for debugging
-#
-RUN echo '<?php phpinfo();' > /var/www/html/phpinfo.php
+#EXPOSE 80
+#CMD ["apachectl", "-D FOREGROUND"]
 
 
 
 #
 # Add composer
 #
-#COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 
 
 #
-# Make w workdir where to store the files
+# Make workdir where to store the files
 #
-RUN mkdir -p /app
-WORKDIR /app
+ARG workdir=/home/anax/repo
+ARG localUser=anax
+RUN useradd --create-home --shell /bin/bash $localUser \
+	&& mkdir -p $workdir \
+	&& chown $localUser $workdir
+#USER $localUser
+WORKDIR $workdir
+#COPY default ./

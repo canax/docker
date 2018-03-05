@@ -6,7 +6,7 @@
 #
 # Use something as base image
 #
-FROM php:7.2-apache
+FROM php:7.0-cli
 
 
 
@@ -70,16 +70,6 @@ RUN { \
 
 
 #
-# Enable apache modules
-#
-RUN a2enmod rewrite expires cgi setenvif
-COPY apache.conf /etc/apache2/sites-available/000-default.conf
-#EXPOSE 80
-#CMD ["apachectl", "-D FOREGROUND"]
-
-
-
-#
 # Add composer
 #
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -94,6 +84,6 @@ ARG localUser=anax
 RUN useradd --create-home --shell /bin/bash $localUser \
 	&& mkdir -p $workdir \
 	&& chown $localUser $workdir
-#USER $localUser
+USER $localUser
 WORKDIR $workdir
 #COPY default ./

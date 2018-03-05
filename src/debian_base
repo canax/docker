@@ -1,0 +1,10 @@
+
+
+
+#
+# Get needed base tools in Debian
+#
+#RUN apt-get update && apt-get install -y \
+#    sudo            \
+#    vim             \
+#    && rm -rf /var/lib/apt/lists/*

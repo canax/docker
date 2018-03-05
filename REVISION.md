@@ -2,6 +2,15 @@ Revision history
 ====================
 
 
+v0.9.2 (2018-03-05)
+--------------------
+
+* Build Dockerfiles from smaller blocks.
+* Support PHP56, PHP70, PHP71, PHP72 as cli.
+* Support PHP56, PHP70, PHP71, PHP72 as apache.
+
+
+
 v0.9.1 (2018-02-26)
 --------------------
 

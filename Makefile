@@ -1,6 +1,11 @@
-# ---------------------------------------------------------------------------
+#!/usr/bin/env make
 #
-# General setup
+# An Anax module.
+# See organisation on GitHub: https://github.com/canax
+
+# ------------------------------------------------------------------------
+#
+# General stuff, reusable for all Makefiles.
 #
 
 # Detect OS
@@ -28,49 +33,84 @@ THIS_MAKEFILE := $(call WHERE-AM-I)
 # Echo some nice helptext based on the target comment
 HELPTEXT = $(ECHO) "$(ACTION)--->" `egrep "^\# target: $(1) " $(THIS_MAKEFILE) | sed "s/\# target: $(1)[ ]*-[ ]* / /g"` "$(NO_COLOR)"
 
-# target: help                    - Displays help with targets available.
+# Check version  and path to command and display on one line
+CHECK_VERSION = printf "%-15s %-10s %s\n" "`basename $(1)`" "`$(1) --version $(2)`" "`which $(1)`"
+
+# Print out colored action message
+ACTION_MESSAGE = $(ECHO) "$(ACTION)---> $(1)$(NO_COLOR)"
+
+
+
+# target: help                    - Displays help.
 .PHONY:  help
 help:
 	@$(call HELPTEXT,$@)
+	@sed '/^$$/q' $(THIS_MAKEFILE) | tail +3 | sed 's/#\s*//g'
 	@$(ECHO) "Usage:"
 	@$(ECHO) " make [target] ..."
 	@$(ECHO) "target:"
-	@egrep "^# target:" Makefile | sed 's/# target: / /g'
+	@egrep "^# target:" $(THIS_MAKEFILE) | sed 's/# target: / /g'
 
 
 
-# ---------------------------------------------------------------------------
+# ------------------------------------------------------------------------
 #
-# Specifics
-# 
+# Specifics for this project.
+#
 D  := docker
 DC := docker-compose
 
 
 
+# target: update                  - Create the Dockerfiles from source.
+.PHONY: update
+update:
+	@$(call HELPTEXT,$@)
+	./update.bash
+
+
+
 # target: build                   - Build the docker images.
 .PHONY: build
-build:
+build: update
 	@$(call HELPTEXT,$@)
-	#--no-cache=true 
-	$(D) build --file php72/apache/Dockerfile  \
-		--tag anax/dev:latest                  \
-		--tag anax/dev:php72                   \
+	#--no-cache 
+
+	# php cli
+	$(D) build $(options) --file php72/cli/Dockerfile  \
+		--tag anax/dev:latest               \
+		--tag anax/dev:latest-cli           \
+		--tag anax/dev:php72                \
+		--tag anax/dev:php72-cli            \
+		php72/cli
+	$(D) build $(options) --file php71/cli/Dockerfile  \
+		--tag anax/dev:php71                \
+		--tag anax/dev:php71-cli            \
+		php71/cli
+	$(D) build $(options) --file php70/cli/Dockerfile  \
+		--tag anax/dev:php70                \
+		--tag anax/dev:php70-cli            \
+		php70/cli
+	$(D) build $(options) --file php56/cli/Dockerfile  \
+		--tag anax/dev:php56                \
+		--tag anax/dev:php56-cli            \
+		php56/cli
+
+	# php apache
+	$(D) build $(options) --file php72/apache/Dockerfile  \
+		--tag anax/dev:latest-apache           \
 		--tag anax/dev:php72-apache            \
 		php72/apache
-	$(D) build --file php71/apache/Dockerfile  \
-		--tag anax/dev:php71                   \
+	$(D) build $(options) --file php71/apache/Dockerfile  \
 		--tag anax/dev:php71-apache            \
 		php71/apache
-	$(D) build --file php70/apache/Dockerfile  \
-		--tag anax/dev:php70                   \
+	$(D) build $(options) --file php70/apache/Dockerfile  \
 		--tag anax/dev:php70-apache            \
 		php70/apache
-	$(D) build --file php56/apache/Dockerfile  \
-		--tag anax/dev:php56                   \
+	$(D) build $(options) --file php56/apache/Dockerfile  \
 		--tag anax/dev:php56-apache            \
 		php56/apache
- 
+
 
 
 # target: push                    - Push the docker images to Docker cloud.
@@ -78,11 +118,17 @@ build:
 push:
 	@$(call HELPTEXT,$@)
 	$(D) push anax/dev:latest
+	$(D) push anax/dev:latest-cli
+	$(D) push anax/dev:latest-apache
 	$(D) push anax/dev:php72
+	$(D) push anax/dev:php72-cli
 	$(D) push anax/dev:php72-apache
 	$(D) push anax/dev:php71
+	$(D) push anax/dev:php71-cli
 	$(D) push anax/dev:php71-apache
 	$(D) push anax/dev:php70
+	$(D) push anax/dev:php70-cli
 	$(D) push anax/dev:php70-apache
 	$(D) push anax/dev:php56
+	$(D) push anax/dev:php56-cli
 	$(D) push anax/dev:php56-apache
