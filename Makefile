@@ -111,6 +111,28 @@ build: update
 		--tag anax/dev:php56-apache            \
 		php56/apache
 
+	# # php apache with REM server
+	# $(D) build $(options) \
+	# 	--file php72/apache/Dockerfile-clone-repo-make-install 	\
+	# 	--build-arg REPO=https://github.com/canax/remserver.git	\
+	# 	--tag anax/dev:remserver	           \
+	# 	--tag anax/dev:remserver-apache        \
+	# 	--tag anax/dev:remserver-php72         \
+	# 	--tag anax/dev:remserver-php72-apache  \
+	# 	php72/apache
+	# $(D) build $(options) \
+	# 	--file php71/apache/Dockerfile-clone-repo-make-install 	\
+	# 	--build-arg REPO=https://github.com/canax/remserver.git	\
+	# 	--tag anax/dev:remserver-php71			\
+	# 	--tag anax/dev:remserver-php71-apache  	\
+	# 	php71/apache
+	# $(D) build $(options) \
+	# 	--file php70/apache/Dockerfile-clone-repo-make-install 	\
+	# 	--build-arg REPO=https://github.com/canax/remserver.git	\
+	# 	--tag anax/dev:remserver-php70         	\
+	# 	--tag anax/dev:remserver-php70-apache  	\
+	# 	php70/apache
+
 
 
 # target: push                    - Push the docker images to Docker cloud.
@@ -132,3 +154,12 @@ push:
 	$(D) push anax/dev:php56
 	$(D) push anax/dev:php56-cli
 	$(D) push anax/dev:php56-apache
+	
+	# $(D) push anax/dev:remserver
+	# $(D) push anax/dev:remserver-apache
+	# $(D) push anax/dev:remserver-php72
+	# $(D) push anax/dev:remserver-php72-apache
+	# $(D) push anax/dev:remserver-php71
+	# $(D) push anax/dev:remserver-php71-apache
+	# $(D) push anax/dev:remserver-php70
+	# $(D) push anax/dev:remserver-php70-apache

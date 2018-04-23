@@ -1,0 +1,35 @@
+#
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "make update / update.bash"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+#
+# Use something as base image
+#
+FROM anax/dev:php70-apache
+
+
+
+#
+# Download the REM server with a website
+#
+ARG REPO=
+RUN git clone $REPO . \
+    && make install
+
+#ENV DRUPAL_VERSION 8.5.0-rc1
+#ENV DRUPAL_MD5 21048fe325b090df60620e5882ed39ab
+
+#RUN curl -fSL #"https://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o #drupal.tar.gz \
+#	&& echo "${DRUPAL_MD5} *drupal.tar.gz" | md5sum -c - \
+#	&& tar -xz --strip-components=1 -f drupal.tar.gz \
+#	&& rm drupal.tar.gz \
+#&& chown -R www-data:www-data sites modules themes
+
+
+
+# TODO. Download remserver from Git.
+# Build images
+# Test using images in remserver-website
+# Write its ocumentation.
+# INstall remserver website on rem.dbwebb.se
