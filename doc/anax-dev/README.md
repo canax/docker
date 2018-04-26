@@ -12,12 +12,17 @@ Supported tags and respective Dockerfile links
 
 
 
-### PHP CLI/Apache
+### PHP CLI
 
 * [`php72-cli`, `php72`, `latest-cli`, `latest` (php72/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php72/cli/Dockerfile)
 * [`php71-cli`, `php71` (php71/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php71/cli/Dockerfile)
 * [`php70-cli`, `php70` (php70/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php70/cli/Dockerfile)
 * [`php56-cli`, `php56` (php56/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php56/cli/Dockerfile)
+
+
+
+### PHP Apache
+
 * [`php72-apache`, `latest-apache` (php72/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile)
 * [`php71-apache`, (php71/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php71/apache/Dockerfile)
 * [`php70-apache`, (php70/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php70/apache/Dockerfile)
