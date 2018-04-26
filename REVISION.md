@@ -2,6 +2,13 @@ Revision history
 ====================
 
 
+v0.9.3 (2018-04-26)
+--------------------
+
+* Add image for anax/dev:remserver, an apache image with the anax/remserver-website preinstalled.
+
+
+
 v0.9.2 (2018-03-05)
 --------------------
 

@@ -11,6 +11,15 @@ FROM anax/dev:php72-apache
 
 
 #
+# Get needed base tools in Debian
+#
+RUN apt-get update && apt-get install -y \
+    git            \
+    && rm -rf /var/lib/apt/lists/*
+
+
+
+#
 # Download the REM server with a website
 #
 ARG REPO=

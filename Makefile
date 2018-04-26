@@ -72,11 +72,16 @@ update:
 
 # target: build                   - Build the docker images.
 .PHONY: build
-build: update
+build: update build-php-cli build-php-apache build-remserver
 	@$(call HELPTEXT,$@)
 	#--no-cache 
 
-	# php cli
+
+
+# target: build-php-cli           - Build images php-cli.
+.PHONY: build-php-cli
+build-php-cli: update
+	@$(call HELPTEXT,$@)
 	$(D) build $(options) --file php72/cli/Dockerfile  \
 		--tag anax/dev:latest               \
 		--tag anax/dev:latest-cli           \
@@ -96,7 +101,12 @@ build: update
 		--tag anax/dev:php56-cli            \
 		php56/cli
 
-	# php apache
+
+
+# target: build-php-apache        - Build images php-apache.
+.PHONY: build-php-apache
+build-php-apache: update
+	@$(call HELPTEXT,$@)
 	$(D) build $(options) --file php72/apache/Dockerfile  \
 		--tag anax/dev:latest-apache           \
 		--tag anax/dev:php72-apache            \
@@ -111,27 +121,20 @@ build: update
 		--tag anax/dev:php56-apache            \
 		php56/apache
 
-	# # php apache with REM server
-	# $(D) build $(options) \
-	# 	--file php72/apache/Dockerfile-clone-repo-make-install 	\
-	# 	--build-arg REPO=https://github.com/canax/remserver.git	\
-	# 	--tag anax/dev:remserver	           \
-	# 	--tag anax/dev:remserver-apache        \
-	# 	--tag anax/dev:remserver-php72         \
-	# 	--tag anax/dev:remserver-php72-apache  \
-	# 	php72/apache
-	# $(D) build $(options) \
-	# 	--file php71/apache/Dockerfile-clone-repo-make-install 	\
-	# 	--build-arg REPO=https://github.com/canax/remserver.git	\
-	# 	--tag anax/dev:remserver-php71			\
-	# 	--tag anax/dev:remserver-php71-apache  	\
-	# 	php71/apache
-	# $(D) build $(options) \
-	# 	--file php70/apache/Dockerfile-clone-repo-make-install 	\
-	# 	--build-arg REPO=https://github.com/canax/remserver.git	\
-	# 	--tag anax/dev:remserver-php70         	\
-	# 	--tag anax/dev:remserver-php70-apache  	\
-	# 	php70/apache
+
+
+# target: build-remserver         - Build images remserver.
+.PHONY: build-remserver
+build-remserver: update
+	@$(call HELPTEXT,$@)
+	$(D) build $(options) \
+		--file php72/apache/Dockerfile-clone-repo-make-install 	\
+		--build-arg REPO=https://github.com/canax/remserver-website.git	\
+		--tag anax/dev:remserver	           \
+		--tag anax/dev:remserver-apache        \
+		--tag anax/dev:remserver-php72         \
+		--tag anax/dev:remserver-php72-apache  \
+		php72/apache
 
 
 
@@ -155,11 +158,7 @@ push:
 	$(D) push anax/dev:php56-cli
 	$(D) push anax/dev:php56-apache
 	
-	# $(D) push anax/dev:remserver
-	# $(D) push anax/dev:remserver-apache
-	# $(D) push anax/dev:remserver-php72
-	# $(D) push anax/dev:remserver-php72-apache
-	# $(D) push anax/dev:remserver-php71
-	# $(D) push anax/dev:remserver-php71-apache
-	# $(D) push anax/dev:remserver-php70
-	# $(D) push anax/dev:remserver-php70-apache
+	$(D) push anax/dev:remserver
+	$(D) push anax/dev:remserver-apache
+	$(D) push anax/dev:remserver-php72
+	$(D) push anax/dev:remserver-php72-apache

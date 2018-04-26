@@ -1,30 +1,52 @@
 version: "3"
 services:
+    php72:
+        image: anax/dev:php72
+        volumes: [ ".:/home/anax/repo" ]
+
     php72-apache:
         image: anax/dev:php72-apache
-        ports:
-            - "10072:80"
-        #volumes:
-            #- .:/app
-            #- ./config/docker/dbwebb.se.conf:/etc/apache2/sites-enabled/000-default.conf
-    php71-apache:
+        ports: [ "10072:80" ]
+        volumes: [ ".:/home/anax/repo" ]
+
+    php71:
+        image: anax/dev:php71
+        volumes: [ ".:/home/anax/repo" ]
+
+    php71-apache: 
         image: anax/dev:php71-apache
-        ports:
-            - "10071:80"
-        #volumes:
-            #- .:/app
-            #- ./config/docker/dbwebb.se.conf:/etc/apache2/sites-enabled/000-default.conf
-    php70-apache:
+        ports: [ "10071:80" ]
+        volumes: [ ".:/home/anax/repo" ]
+
+    php70:
+        image: anax/dev:php70
+        volumes: [ ".:/home/anax/repo" ]
+
+    php70:
         image: anax/dev:php70-apache
-        ports:
-            - "10070:80"
-        #volumes:
-            #- .:/app
-            #- ./config/docker/dbwebb.se.conf:/etc/apache2/sites-enabled/000-default.conf
-    php56-apache:
+        ports: [ "10070:80" ]
+        volumes: [ ".:/home/anax/repo" ]
+
+    php56:
+        image: anax/dev:php56
+        volumes: [ ".:/home/anax/repo" ]
+
+    php56:
         image: anax/dev:php56-apache
+        ports: [ "10056:80" ]
+        volumes: [ ".:/home/anax/repo" ]
+
+    latest:
+        image: anax/dev:latest
+        volumes: [ ".:/home/anax/repo" ]
+
+    latest-apache: &latest-apache
+        image: anax/dev:latest-apache
+        volumes: [ ".:/home/anax/repo" ]
+        ports: [ "10099:80" ]
+
+    remserver:
+        image: anax/dev:latest-apache
         ports:
-            - "10056:80"
-        #volumes:
-            #- .:/app
-            #- ./config/docker/dbwebb.se.conf:/etc/apache2/sites-enabled/000-default.conf
+            - "8090:80"
+        volumes: [ ".:/home/anax/repo" ]

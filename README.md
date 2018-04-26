@@ -13,31 +13,39 @@ Development of images
 Use docker-compose to try out and test the various images. See `docker-compose.yml` for the collection of images.
 
 ```text
-docker-compose up php71-apache
+docker-compose up php72-apache
 ```
 
-Use makefile to build and push images.
+The script [`update.bash`](update.bash) combines the Docker images from smaller pieces found in the directory [`src/`](src).
+
+Use makefile to build images and then push images and tags.
 
 ```text
 make build
 make push
 ```
 
+Check what tagets are available.
 
+```text
+make
+```
 
-Acknowledgement
--------------------
+Build only a part of the images.
 
-This is a co-effort of several people using freely available documentation and tools from the open source community.
+```text
+make build-remserver
+```
 
-For contributors, see commit history and issues.
+Build and ignore cached values.
 
-Feel free to help building up the repository with more content suited for training and education.
-
+```text
+make build-remserver options="--no-cache"
+```
 
 
 
 ```
  .
-..:  Copyright (c) 2017 dbwebb et al, info@dbwebb.se
+..:  Copyright (c) 2017-2018 Mikael Roos, mos@dbwebb.se
 ```

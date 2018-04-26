@@ -10,6 +10,10 @@ Anax is a PHP framework. It resides in the [Canax organisation on GitHub](https:
 Supported tags and respective Dockerfile links
 -------------------
 
+
+
+### PHP CLI/Apache
+
 * [`php72-cli`, `php72`, `latest-cli`, `latest` (php72/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php72/cli/Dockerfile)
 * [`php71-cli`, `php71` (php71/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php71/cli/Dockerfile)
 * [`php70-cli`, `php70` (php70/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php70/cli/Dockerfile)
@@ -18,6 +22,12 @@ Supported tags and respective Dockerfile links
 * [`php71-apache`, (php71/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php71/apache/Dockerfile)
 * [`php70-apache`, (php70/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php70/apache/Dockerfile)
 * [`php56-apache`, (php56/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php56/apache/Dockerfile)
+
+
+
+### REM server
+
+* [`remserver`, `remserver-apache`, `remserver-php72-apache` (php72/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile-clone-repo-make-install)
 
 
 
@@ -62,11 +72,11 @@ Create a `docker-compose.yml` with services for all variants.
 ```text
 version: "3"
 services:
-    php72: &latest
+    php72:
         image: anax/dev:php72
         volumes: [ ".:/home/anax/repo" ]
 
-    php72-apache: &latest-apache
+    php72-apache:
         image: anax/dev:php72-apache
         ports: [ "10072:80" ]
         volumes: [ ".:/home/anax/repo" ]
@@ -99,11 +109,17 @@ services:
         volumes: [ ".:/home/anax/repo" ]
 
     latest:
-        <<: *latest
+        image: anax/dev:latest
+        volumes: [ ".:/home/anax/repo" ]
 
-    latest-apache:
-        <<: *latest-apache
-        ports: [ "10080:80" ]
+    latest-apache: &latest-apache
+        image: anax/dev:latest-apache
+        volumes: [ ".:/home/anax/repo" ]
+        ports: [ "10099:80" ]
+
+    remserver:
+        image: anax/dev:remserver
+        ports: [ "10099:80" ]
 ```
 
 Start an apache container in the background.
@@ -112,7 +128,7 @@ Start an apache container in the background.
 docker-compose up -d latest-apache
 ```
 
-You can then open a browser to localhost:10080.
+You can then open a browser to localhost:10099.
 
 Run a bash terminal on the running container.
 
@@ -149,5 +165,5 @@ For contributors, see commit history and issues.
 
 ```
  .
-..:  Copyright (c) 2017-2018 dbwebb et al, anax@dbwebb.se
+..:  Copyright (c) 2017-2018 Mikael Roos, mos@dbwebb.se
 ```
