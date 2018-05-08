@@ -1,0 +1,27 @@
+
+
+
+#
+# Download repo and perform make install-production.
+# To keep the image smaller, install all dependencies and remove within
+# one RUN statement.
+#
+ARG REPO=
+
+# Add composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Install needed utilities, do installation, remove not needed utilities.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        git \
+        make \
+    \
+    && git clone $REPO . \
+    && make install-production \
+    \
+    && apt-get remove -y \
+        git \
+        make \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm /usr/bin/composer

@@ -95,6 +95,4 @@ ARG localUser=anax
 RUN useradd --create-home --shell /bin/bash $localUser \
 	&& mkdir -p $workdir \
 	&& chown $localUser $workdir
-#USER $localUser
 WORKDIR $workdir
-#COPY default ./

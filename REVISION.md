@@ -2,6 +2,14 @@ Revision history
 ====================
 
 
+v0.9.4 (2018-05-08)
+--------------------
+
+* Update image for anax/dev:remserver to decrease size.
+* Create anax/dev:remserver with latest version from repo.
+
+
+
 v0.9.3 (2018-04-26)
 --------------------
 

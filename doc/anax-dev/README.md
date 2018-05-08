@@ -32,7 +32,7 @@ Supported tags and respective Dockerfile links
 
 ### REM server
 
-* [`remserver`, `remserver-apache`, `remserver-php72-apache` (php72/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile-clone-repo-make-install)
+* [`remserver`, `remserver-apache`, `remserver-php72-apache` (php72/apache/Dockerfile-clone-repo-make-install)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile-clone-repo-make-install)
 
 
 

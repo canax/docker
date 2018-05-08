@@ -86,4 +86,3 @@ RUN useradd --create-home --shell /bin/bash $localUser \
 	&& chown $localUser $workdir
 USER $localUser
 WORKDIR $workdir
-#COPY default ./

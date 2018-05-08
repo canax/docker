@@ -1,0 +1,8 @@
+
+
+
+#
+# Enable apache modules
+#
+RUN a2enmod rewrite expires cgi setenvif
+COPY apache-htdocs.conf /etc/apache2/sites-available/000-default.conf
