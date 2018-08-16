@@ -84,6 +84,7 @@ build-php-cli: update
 	@$(call HELPTEXT,$@)
 	$(D) build $(options) --file php72/cli/Dockerfile  \
 		--tag anax/dev:latest               \
+		--tag anax/dev:cli                  \
 		--tag anax/dev:latest-cli           \
 		--tag anax/dev:php72                \
 		--tag anax/dev:php72-cli            \
@@ -108,6 +109,7 @@ build-php-cli: update
 build-php-apache: update
 	@$(call HELPTEXT,$@)
 	$(D) build $(options) --file php72/apache/Dockerfile  \
+		--tag anax/dev:apache		           \
 		--tag anax/dev:latest-apache           \
 		--tag anax/dev:php72-apache            \
 		php72/apache

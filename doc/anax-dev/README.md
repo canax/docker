@@ -14,7 +14,7 @@ Supported tags and respective Dockerfile links
 
 ### PHP CLI
 
-* [`php72-cli`, `php72`, `latest-cli`, `latest` (php72/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php72/cli/Dockerfile)
+* [`php72-cli`, `php72`, `latest-cli`, `cli`, `latest` (php72/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php72/cli/Dockerfile)
 * [`php71-cli`, `php71` (php71/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php71/cli/Dockerfile)
 * [`php70-cli`, `php70` (php70/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php70/cli/Dockerfile)
 * [`php56-cli`, `php56` (php56/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php56/cli/Dockerfile)
@@ -23,7 +23,7 @@ Supported tags and respective Dockerfile links
 
 ### PHP Apache
 
-* [`php72-apache`, `latest-apache` (php72/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile)
+* [`php72-apache`, `latest-apache`, `apache` (php72/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile)
 * [`php71-apache`, (php71/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php71/apache/Dockerfile)
 * [`php70-apache`, (php70/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php70/apache/Dockerfile)
 * [`php56-apache`, (php56/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php56/apache/Dockerfile)
@@ -117,8 +117,12 @@ services:
         image: anax/dev:latest
         volumes: [ ".:/home/anax/repo" ]
 
-    latest-apache: &latest-apache
-        image: anax/dev:latest-apache
+    cli:
+        image: anax/dev:cli
+        volumes: [ ".:/home/anax/repo" ]
+
+    apache:
+        image: anax/dev:apache
         volumes: [ ".:/home/anax/repo" ]
         ports: [ "10099:80" ]
 
@@ -130,7 +134,7 @@ services:
 Start an apache container in the background.
 
 ```text
-docker-compose up -d latest-apache
+docker-compose up -d apache
 ```
 
 You can then open a browser to localhost:10099.

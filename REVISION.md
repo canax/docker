@@ -3,7 +3,14 @@ Revision history
 
 
 
-v0.9.5 (2018-05-08)
+v0.9.6 (2018-08-16)
+--------------------
+
+* Adding tag for anax/dev:cli and anax/dev:apache to ease usage.
+
+
+
+v0.9.5 (2018-08-16)
 --------------------
 
 * Adding PHP extension mbstring, needed by phpunt/phpunit.
