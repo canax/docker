@@ -3,6 +3,13 @@ Revision history
 
 
 
+v0.9.5 (2018-05-08)
+--------------------
+
+* Adding PHP extension mbstring, needed by phpunt/phpunit.
+
+
+
 v0.9.4 (2018-05-08)
 --------------------
 
