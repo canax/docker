@@ -3,6 +3,14 @@ Revision history
 
 
 
+v1.0.0 (2018-11-05)
+--------------------
+
+* Bump to 1.0 since everything seems to work.
+* Add php7.3.
+
+
+
 v0.9.7 (2018-08-16)
 --------------------
 

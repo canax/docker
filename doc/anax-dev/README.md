@@ -14,6 +14,7 @@ Supported tags and respective Dockerfile links
 
 ### PHP CLI
 
+* [`php73-cli`, `php73` (php73/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php73/cli/Dockerfile)
 * [`php72-cli`, `php72`, `latest-cli`, `cli`, `latest` (php72/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php72/cli/Dockerfile)
 * [`php71-cli`, `php71` (php71/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php71/cli/Dockerfile)
 * [`php70-cli`, `php70` (php70/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php70/cli/Dockerfile)
@@ -23,6 +24,7 @@ Supported tags and respective Dockerfile links
 
 ### PHP Apache
 
+* [`php73-apache`, (php73/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php73/apache/Dockerfile)
 * [`php72-apache`, `latest-apache`, `apache` (php72/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile)
 * [`php71-apache`, (php71/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php71/apache/Dockerfile)
 * [`php70-apache`, (php70/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php70/apache/Dockerfile)
@@ -77,6 +79,15 @@ Create a `docker-compose.yml` with services for all variants.
 ```text
 version: "3"
 services:
+    php73:
+        image: anax/dev:php73
+        volumes: [ ".:/home/anax/repo" ]
+
+    php73-apache:
+        image: anax/dev:php73-apache
+        ports: [ "10073:80" ]
+        volumes: [ ".:/home/anax/repo" ]
+
     php72:
         image: anax/dev:php72
         volumes: [ ".:/home/anax/repo" ]

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Dockerfiles for php-cli
-for version in php56 php70 php71 php72; do
+for version in php56 php70 php71 php72 php73; do
     lib="$version/cli"
     target="$lib/Dockerfile"
 
@@ -17,7 +17,7 @@ for version in php56 php70 php71 php72; do
 done
 
 # Dockerfiles for php-apache
-for version in php56 php70 php71 php72; do
+for version in php56 php70 php71 php72 php73; do
     lib="$version/apache"
     target="$lib/Dockerfile"
 
