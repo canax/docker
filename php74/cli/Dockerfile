@@ -6,7 +6,16 @@
 #
 # Use something as base image
 #
-FROM php:7.3-rc-apache
+FROM php:7.4-rc-cli
+
+
+
+#
+# Get needed base tools in Debian
+#
+RUN apt-get update && apt-get install -y \
+        libzip-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 
 
@@ -71,10 +80,9 @@ RUN { \
 
 
 #
-# Enable apache modules
+# Add composer
 #
-RUN a2enmod rewrite expires cgi setenvif
-COPY apache-htdocs.conf /etc/apache2/sites-available/000-default.conf
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 
 
@@ -86,31 +94,5 @@ ARG localUser=anax
 RUN useradd --create-home --shell /bin/bash $localUser \
 	&& mkdir -p $workdir \
 	&& chown $localUser $workdir
+USER $localUser
 WORKDIR $workdir
-
-
-
-#
-# Download repo and perform make install-production.
-# To keep the image smaller, install all dependencies and remove within
-# one RUN statement.
-#
-ARG REPO=
-
-# Add composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Install needed utilities, do installation, remove not needed utilities.
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        git \
-        make \
-    \
-    && git clone $REPO . \
-    && make install-production \
-    \
-    && apt-get remove -y \
-        git \
-        make \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm /usr/bin/composer

@@ -6,7 +6,7 @@
 #
 # Use something as base image
 #
-FROM php:7.3-rc-cli
+FROM php:7.3-cli
 
 
 

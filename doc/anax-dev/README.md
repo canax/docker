@@ -14,8 +14,8 @@ Supported tags and respective Dockerfile links
 
 ### PHP CLI
 
-* [`php73-cli`, `php73` (php73/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php73/cli/Dockerfile)
-* [`php72-cli`, `php72`, `latest-cli`, `cli`, `latest` (php72/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php72/cli/Dockerfile)
+* [`php73-cli`, `php73`, `latest-cli`, `cli`, `latest` (php73/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php73/cli/Dockerfile)
+* [`php72-cli`, `php72` (php72/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php72/cli/Dockerfile)
 * [`php71-cli`, `php71` (php71/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php71/cli/Dockerfile)
 * [`php70-cli`, `php70` (php70/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php70/cli/Dockerfile)
 * [`php56-cli`, `php56` (php56/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php56/cli/Dockerfile)
@@ -24,11 +24,11 @@ Supported tags and respective Dockerfile links
 
 ### PHP Apache
 
-* [`php73-apache`, (php73/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php73/apache/Dockerfile)
-* [`php72-apache`, `latest-apache`, `apache` (php72/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile)
-* [`php71-apache`, (php71/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php71/apache/Dockerfile)
-* [`php70-apache`, (php70/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php70/apache/Dockerfile)
-* [`php56-apache`, (php56/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php56/apache/Dockerfile)
+* [`php73-apache`, `latest-apache`, `apache` (php73/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php73/apache/Dockerfile)
+* [`php72-apache` (php72/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile)
+* [`php71-apache` (php71/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php71/apache/Dockerfile)
+* [`php70-apache` (php70/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php70/apache/Dockerfile)
+* [`php56-apache` (php56/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php56/apache/Dockerfile)
 
 
 

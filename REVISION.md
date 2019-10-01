@@ -3,6 +3,15 @@ Revision history
 
 
 
+v1.1.x (2019-09-25)
+--------------------
+
+* Update php7.3 to be not rc.
+* Add php7.4, but build failed.
+* Remove unnused files.
+
+
+
 v1.0.0 (2018-11-05)
 --------------------
 

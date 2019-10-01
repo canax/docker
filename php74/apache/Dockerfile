@@ -6,7 +6,7 @@
 #
 # Use something as base image
 #
-FROM php:7.3-apache
+FROM php:7.4-rc-apache
 
 
 
