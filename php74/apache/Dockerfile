@@ -6,7 +6,7 @@
 #
 # Use something as base image
 #
-FROM php:7.4-rc-apache
+FROM php:7.4-apache
 
 
 
@@ -29,11 +29,12 @@ RUN set -ex; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		libjpeg-dev \
+		libonig-dev \
 		libpng-dev \
 		libsqlite3-dev \
 	; \
 	\
-	docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr; \
+	docker-php-ext-configure gd --with-jpeg; \
 	docker-php-ext-install -j "$(nproc)" \
 		gd \
 		mbstring \

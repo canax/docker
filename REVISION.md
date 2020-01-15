@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.2.0 (2020-01-15)
+--------------------
+
+* Add php7.4, needed a few updates to the build structure.
+
+
+
 v1.1.1 (2019-10-01)
 --------------------
 

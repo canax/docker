@@ -82,14 +82,14 @@ build: update build-php-cli build-php-apache build-remserver
 .PHONY: build-php-cli
 build-php-cli: update
 	@$(call HELPTEXT,$@)
-	# $(D) build $(options) --file php74/cli/Dockerfile  \
-	# 	--tag anax/dev:php74                \
-	# 	--tag anax/dev:php74-cli            \
-	# 	php74/cli
-	$(D) build $(options) --file php73/cli/Dockerfile  \
+	$(D) build $(options) --file php74/cli/Dockerfile  \
 		--tag anax/dev:latest               \
 		--tag anax/dev:cli                  \
 		--tag anax/dev:latest-cli           \
+		--tag anax/dev:php74                \
+		--tag anax/dev:php74-cli            \
+		php74/cli
+	$(D) build $(options) --file php73/cli/Dockerfile  \
 		--tag anax/dev:php73                \
 		--tag anax/dev:php73-cli            \
 		php73/cli
@@ -116,12 +116,12 @@ build-php-cli: update
 .PHONY: build-php-apache
 build-php-apache: update
 	@$(call HELPTEXT,$@)
-	# $(D) build $(options) --file php74/apache/Dockerfile  \
-	# 	--tag anax/dev:php74-apache            \
-	# 	php74/apache
-	$(D) build $(options) --file php73/apache/Dockerfile  \
+	$(D) build $(options) --file php74/apache/Dockerfile  \
 		--tag anax/dev:apache		           \
 		--tag anax/dev:latest-apache           \
+		--tag anax/dev:php74-apache            \
+		php74/apache
+	$(D) build $(options) --file php73/apache/Dockerfile  \
 		--tag anax/dev:php73-apache            \
 		php73/apache
 	$(D) build $(options) --file php72/apache/Dockerfile  \
