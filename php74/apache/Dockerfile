@@ -20,6 +20,18 @@ RUN apt-get update && apt-get install -y \
 
 
 #
+# Get needed base tools in Debian
+#
+RUN apt-get update && apt-get install -y \
+        ca-certificates \
+        git             \
+        openssh-client  \
+        wget            \
+    && rm -rf /var/lib/apt/lists/*
+
+
+
+#
 # Install PHP extensions needed
 #
 RUN set -ex; \
@@ -92,9 +104,24 @@ COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 
 #
+# Get anax-cli
+#
+RUN bash -c "$(wget -qO- https://raw.githubusercontent.com/canax/anax-cli/master/src/install.bash)"
+
+
+
+#
 # Add composer
 #
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+
+
+#
+# Add defult configuration for Git
+#
+RUN git config --global user.email "you@example.com" \
+    && git config --global user.name "Your Name"
 
 
 

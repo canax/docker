@@ -5,5 +5,8 @@
 # Get needed base tools in Debian
 #
 RUN apt-get update && apt-get install -y \
-        git            \
+        ca-certificates \
+        git             \
+        openssh-client  \
+        wget            \
     && rm -rf /var/lib/apt/lists/*

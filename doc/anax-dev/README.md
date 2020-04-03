@@ -81,13 +81,28 @@ Create a `docker-compose.yml` with services for all variants.
 ```text
 version: "3"
 services:
+    cli:
+        image: anax/dev
+        volumes: [ ".:/home/anax/repo" ]
+
+    apache:
+        image: anax/dev:apache
+        volumes: [ ".:/home/anax/repo" ]
+        ports: [ "10099:80" ]
+
+    remserver:
+        image: anax/dev:apache
+        ports:
+            - "8090:80"
+        volumes: [ ".:/home/anax/repo" ]
+
     php74:
         image: anax/dev:php74
         volumes: [ ".:/home/anax/repo" ]
 
     php74-apache:
         image: anax/dev:php74-apache
-        ports: [ "10074:80" ]
+        ports: [ "10072:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php73:
@@ -96,7 +111,7 @@ services:
 
     php73-apache:
         image: anax/dev:php73-apache
-        ports: [ "10073:80" ]
+        ports: [ "10072:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php72:
@@ -112,7 +127,7 @@ services:
         image: anax/dev:php71
         volumes: [ ".:/home/anax/repo" ]
 
-    php71-apache: 
+    php71-apache:
         image: anax/dev:php71-apache
         ports: [ "10071:80" ]
         volumes: [ ".:/home/anax/repo" ]
@@ -134,29 +149,12 @@ services:
         image: anax/dev:php56-apache
         ports: [ "10056:80" ]
         volumes: [ ".:/home/anax/repo" ]
-
-    latest:
-        image: anax/dev:latest
-        volumes: [ ".:/home/anax/repo" ]
-
-    cli:
-        image: anax/dev:cli
-        volumes: [ ".:/home/anax/repo" ]
-
-    apache:
-        image: anax/dev:apache
-        volumes: [ ".:/home/anax/repo" ]
-        ports: [ "10099:80" ]
-
-    remserver:
-        image: anax/dev:remserver
-        ports: [ "10099:80" ]
 ```
 
 Start an apache container in the background.
 
 ```text
-docker-compose up -d apache
+docker-compose up -d latest-apache
 ```
 
 You can then open a browser to localhost:10099.
@@ -167,10 +165,10 @@ Run a bash terminal on the running container.
 docker-compose exec latest-apache bash
 ```
 
-Shut down the container.
+Shut down the container and all its volumes.
 
 ```text
-docker-compose down latest-apache
+docker-compose down -v
 ```
 
 
