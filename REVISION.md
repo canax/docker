@@ -3,6 +3,21 @@ Revision history
 
 
 
+v1.3.1 (2020-04-03)
+--------------------
+
+* Update Makefile to push tags of PHP 74 build.
+
+
+
+v1.3.0 (2020-04-03)
+--------------------
+
+* Add anax-cli.
+* Add git and ssh to enable build on CircleCi.
+
+
+
 v1.2.0 (2020-01-15)
 --------------------
 

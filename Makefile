@@ -74,7 +74,7 @@ update:
 .PHONY: build
 build: update build-php-cli build-php-apache build-remserver
 	@$(call HELPTEXT,$@)
-	#--no-cache 
+	#--no-cache
 
 
 
@@ -162,8 +162,8 @@ push:
 	$(D) push anax/dev:latest
 	$(D) push anax/dev:cli
 	$(D) push anax/dev:latest-cli
-	# $(D) push anax/dev:php74
-	# $(D) push anax/dev:php74-cli
+	$(D) push anax/dev:php74
+	$(D) push anax/dev:php74-cli
 	$(D) push anax/dev:php73
 	$(D) push anax/dev:php73-cli
 	$(D) push anax/dev:php72
@@ -178,7 +178,7 @@ push:
 	# Apache
 	$(D) push anax/dev:apache
 	$(D) push anax/dev:latest-apache
-	# $(D) push anax/dev:php74-apache
+	$(D) push anax/dev:php74-apache
 	$(D) push anax/dev:php73-apache
 	$(D) push anax/dev:php72-apache
 	$(D) push anax/dev:php71-apache
