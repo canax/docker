@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.3.2 (2020-09-21)
+--------------------
+
+* Add modules to apache to allow for no caching.
+
+
+
 v1.3.1 (2020-04-03)
 --------------------
 

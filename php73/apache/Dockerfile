@@ -83,7 +83,7 @@ RUN { \
 #
 # Enable apache modules
 #
-RUN a2enmod rewrite expires cgi setenvif
+RUN a2enmod cache cgi expires headers rewrite setenvif
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
 #EXPOSE 80
 #CMD ["apachectl", "-D FOREGROUND"]
