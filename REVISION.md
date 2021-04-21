@@ -3,6 +3,14 @@ Revision history
 
 
 
+v1.4.1 (2021-04-21)
+--------------------
+
+* Add fallbackresource into Apache.
+* Install unzip.
+
+
+
 v1.4.0 (2021-04-21)
 --------------------
 

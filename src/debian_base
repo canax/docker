@@ -9,4 +9,5 @@ RUN apt-get update && apt-get install -y \
         git             \
         openssh-client  \
         wget            \
+        unzip           \
     && rm -rf /var/lib/apt/lists/*

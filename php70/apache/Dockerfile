@@ -11,6 +11,19 @@ FROM php:7.0-apache
 
 
 #
+# Get needed base tools in Debian
+#
+RUN apt-get update && apt-get install -y \
+        ca-certificates \
+        git             \
+        openssh-client  \
+        wget            \
+        unzip           \
+    && rm -rf /var/lib/apt/lists/*
+
+
+
+#
 # Install PHP extensions needed
 #
 RUN set -ex; \
