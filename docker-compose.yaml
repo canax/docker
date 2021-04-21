@@ -7,12 +7,21 @@ services:
     apache:
         image: anax/dev:apache
         volumes: [ ".:/home/anax/repo" ]
-        ports: [ "10099:80" ]
+        ports: [ "11000:80" ]
 
     remserver:
         image: anax/dev:apache
         ports:
             - "8090:80"
+        volumes: [ ".:/home/anax/repo" ]
+
+    php80:
+        image: anax/dev:php80
+        volumes: [ ".:/home/anax/repo" ]
+
+    php80-apache:
+        image: anax/dev:php80-apache
+        ports: [ "11080:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php74:
@@ -21,7 +30,7 @@ services:
 
     php74-apache:
         image: anax/dev:php74-apache
-        ports: [ "10072:80" ]
+        ports: [ "11074:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php73:
@@ -30,7 +39,7 @@ services:
 
     php73-apache:
         image: anax/dev:php73-apache
-        ports: [ "10072:80" ]
+        ports: [ "11073:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php72:
@@ -39,7 +48,7 @@ services:
 
     php72-apache:
         image: anax/dev:php72-apache
-        ports: [ "10072:80" ]
+        ports: [ "11072:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php71:
@@ -48,7 +57,7 @@ services:
 
     php71-apache:
         image: anax/dev:php71-apache
-        ports: [ "10071:80" ]
+        ports: [ "11071:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php70:
@@ -57,7 +66,7 @@ services:
 
     php70:
         image: anax/dev:php70-apache
-        ports: [ "10070:80" ]
+        ports: [ "11070:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php56:
@@ -66,5 +75,5 @@ services:
 
     php56:
         image: anax/dev:php56-apache
-        ports: [ "10056:80" ]
+        ports: [ "11056:80" ]
         volumes: [ ".:/home/anax/repo" ]

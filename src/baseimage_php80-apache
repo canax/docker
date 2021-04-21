@@ -1,0 +1,13 @@
+#
+# Use something as base image
+#
+FROM php:8.0-apache
+
+
+
+#
+# Get needed base tools in Debian
+#
+RUN apt-get update && apt-get install -y \
+        libzip-dev \
+    && rm -rf /var/lib/apt/lists/*

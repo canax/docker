@@ -1,10 +1,12 @@
 Docker for Anax (dev)
 -------------------
 
-Docker images for running, testing and developing Anax and Anax sites.
+Docker images for running, testing and developing Anax, Anax modules and Anax sites.
 
-Anax is a PHP framework. It resides in the [Canax organisation on GitHub](https://github.com/canax).
+Anax is a PHP framework. It resides in the [Anax organisation on GitHub](https://github.com/canax).
 
+The docker files are either for cli usage or comes with an Apache installation.
+ 
 
 
 Supported tags and respective Dockerfile links
@@ -14,6 +16,7 @@ Supported tags and respective Dockerfile links
 
 ### PHP CLI
 
+* [`php80-cli`, `php80` (php80/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php80/cli/Dockerfile)
 * [`php74-cli`, `php74`, `latest-cli`, `cli`, `latest` (php74/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php74/cli/Dockerfile)
 * [`php73-cli`, `php73` (php73/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php73/cli/Dockerfile)
 * [`php72-cli`, `php72` (php72/cli/Dockerfile)](https://github.com/canax/docker/blob/master/php72/cli/Dockerfile)
@@ -25,6 +28,7 @@ Supported tags and respective Dockerfile links
 
 ### PHP Apache
 
+* [`php80-apache` (php80/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php80/apache/Dockerfile)
 * [`php74-apache`, `latest-apache`, `apache` (php74/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php74/apache/Dockerfile)
 * [`php73-apache` (php73/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php73/apache/Dockerfile)
 * [`php72-apache` (php72/apache/Dockerfile)](https://github.com/canax/docker/blob/master/php72/apache/Dockerfile)
@@ -88,12 +92,21 @@ services:
     apache:
         image: anax/dev:apache
         volumes: [ ".:/home/anax/repo" ]
-        ports: [ "10099:80" ]
+        ports: [ "11000:80" ]
 
     remserver:
         image: anax/dev:apache
         ports:
             - "8090:80"
+        volumes: [ ".:/home/anax/repo" ]
+
+    php80:
+        image: anax/dev:php80
+        volumes: [ ".:/home/anax/repo" ]
+
+    php80-apache:
+        image: anax/dev:php80-apache
+        ports: [ "11080:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php74:
@@ -102,7 +115,7 @@ services:
 
     php74-apache:
         image: anax/dev:php74-apache
-        ports: [ "10072:80" ]
+        ports: [ "11074:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php73:
@@ -111,7 +124,7 @@ services:
 
     php73-apache:
         image: anax/dev:php73-apache
-        ports: [ "10072:80" ]
+        ports: [ "11073:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php72:
@@ -120,7 +133,7 @@ services:
 
     php72-apache:
         image: anax/dev:php72-apache
-        ports: [ "10072:80" ]
+        ports: [ "11072:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php71:
@@ -129,7 +142,7 @@ services:
 
     php71-apache:
         image: anax/dev:php71-apache
-        ports: [ "10071:80" ]
+        ports: [ "11071:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php70:
@@ -138,7 +151,7 @@ services:
 
     php70:
         image: anax/dev:php70-apache
-        ports: [ "10070:80" ]
+        ports: [ "11070:80" ]
         volumes: [ ".:/home/anax/repo" ]
 
     php56:
@@ -147,17 +160,25 @@ services:
 
     php56:
         image: anax/dev:php56-apache
-        ports: [ "10056:80" ]
+        ports: [ "11056:80" ]
         volumes: [ ".:/home/anax/repo" ]
+```
+
+Start an bash terminal with a container.
+
+```text
+docker-compose run cli bash   # latest
+docker-compose run php80 bash # specific version
 ```
 
 Start an apache container in the background.
 
 ```text
-docker-compose up -d latest-apache
+docker-compose up -d apache       # latest
+docker-compose up -d php80-apache # specific version
 ```
 
-You can then open a browser to localhost:10099.
+You can then open a browser to localhost:11000.
 
 Run a bash terminal on the running container.
 
@@ -194,5 +215,5 @@ For contributors, see commit history and issues.
 
 ```
  .
-..:  Copyright (c) 2017-2020 Mikael Roos, mos@dbwebb.se
+..:  Copyright (c) 2017-2021 Mikael Roos, mos@dbwebb.se
 ```

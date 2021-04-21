@@ -1,1 +1,1 @@
-Default installation to run an Anax website with PHP and Apache.
+Docker images for running, testing and developing Anax, Anax modules and Anax sites.

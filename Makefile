@@ -82,6 +82,10 @@ build: update build-php-cli build-php-apache build-remserver
 .PHONY: build-php-cli
 build-php-cli: update
 	@$(call HELPTEXT,$@)
+	$(D) build $(options) --file php80/cli/Dockerfile  \
+		--tag anax/dev:php80                \
+		--tag anax/dev:php80-cli            \
+		php80/cli
 	$(D) build $(options) --file php74/cli/Dockerfile  \
 		--tag anax/dev:latest               \
 		--tag anax/dev:cli                  \
@@ -116,6 +120,9 @@ build-php-cli: update
 .PHONY: build-php-apache
 build-php-apache: update
 	@$(call HELPTEXT,$@)
+	$(D) build $(options) --file php80/apache/Dockerfile  \
+		--tag anax/dev:php80-apache            \
+		php80/apache
 	$(D) build $(options) --file php74/apache/Dockerfile  \
 		--tag anax/dev:apache		           \
 		--tag anax/dev:latest-apache           \
@@ -162,6 +169,8 @@ push:
 	$(D) push anax/dev:latest
 	$(D) push anax/dev:cli
 	$(D) push anax/dev:latest-cli
+	$(D) push anax/dev:php80
+	$(D) push anax/dev:php80-cli
 	$(D) push anax/dev:php74
 	$(D) push anax/dev:php74-cli
 	$(D) push anax/dev:php73
@@ -178,6 +187,7 @@ push:
 	# Apache
 	$(D) push anax/dev:apache
 	$(D) push anax/dev:latest-apache
+	$(D) push anax/dev:php80-apache
 	$(D) push anax/dev:php74-apache
 	$(D) push anax/dev:php73-apache
 	$(D) push anax/dev:php72-apache
