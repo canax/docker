@@ -78,6 +78,20 @@ build: update build-php-cli build-php-apache build-remserver
 
 
 
+# target: build-php80             - Build images php-80 (option="--no-cache").
+.PHONY: build-php80
+build-php80: update
+	@$(call HELPTEXT,$@)
+	$(D) build $(options) --file php80/cli/Dockerfile  \
+		--tag anax/dev:php80                \
+		--tag anax/dev:php80-cli            \
+		php80/cli
+	$(D) build $(options) --file php80/apache/Dockerfile  \
+		--tag anax/dev:php80-apache            \
+		php80/apache
+
+
+
 # target: build-php-cli           - Build images php-cli (option="--no-cache").
 .PHONY: build-php-cli
 build-php-cli: update

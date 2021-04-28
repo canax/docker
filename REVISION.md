@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.4.2 (2021-04-28)
+--------------------
+
+* Update the version of composer in PHP 80.
+
+
+
 v1.4.1 (2021-04-21)
 --------------------
 
