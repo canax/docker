@@ -14,9 +14,10 @@ RUN set -ex; \
 		libonig-dev \
 		libpng-dev \
 		libsqlite3-dev \
+		libwebp-dev \
 	; \
 	\
-	docker-php-ext-configure gd --with-jpeg; \
+	docker-php-ext-configure gd --with-jpeg --with-webp; \
 	docker-php-ext-install -j "$(nproc)" \
 		gd \
 		mbstring \

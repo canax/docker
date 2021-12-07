@@ -51,6 +51,8 @@ RUN set -ex; \
 		gd \
 		mbstring \
 		opcache \
+		mysql \
+		mysqli \
 		pdo_mysql \
 		pdo_sqlite \
 		zip \

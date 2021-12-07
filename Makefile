@@ -92,6 +92,34 @@ build-php80: update
 
 
 
+# target: build-php74             - Build images php-74 (option="--no-cache").
+.PHONY: build-php74
+build-php74: update
+	@$(call HELPTEXT,$@)
+	$(D) build $(options) --file php74/cli/Dockerfile  \
+		--tag anax/dev:php74                \
+		--tag anax/dev:php74-cli            \
+		php74/cli
+	$(D) build $(options) --file php74/apache/Dockerfile  \
+		--tag anax/dev:php74-apache            \
+		php74/apache
+
+
+
+# target: build-php56             - Build images php-56 (option="--no-cache").
+.PHONY: build-php56
+build-php56: update
+	@$(call HELPTEXT,$@)
+	$(D) build $(options) --file php56/cli/Dockerfile  \
+		--tag anax/dev:php56                \
+		--tag anax/dev:php56-cli            \
+		php56/cli
+	$(D) build $(options) --file php56/apache/Dockerfile  \
+		--tag anax/dev:php56-apache            \
+		php56/apache
+
+
+
 # target: build-php-cli           - Build images php-cli (option="--no-cache").
 .PHONY: build-php-cli
 build-php-cli: update

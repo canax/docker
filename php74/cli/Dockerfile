@@ -51,6 +51,7 @@ RUN set -ex; \
 	docker-php-ext-install -j "$(nproc)" \
 		gd \
 		mbstring \
+		mysqli \
 		opcache \
 		pdo_mysql \
 		pdo_sqlite \
