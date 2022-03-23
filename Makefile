@@ -78,6 +78,20 @@ build: update build-php-cli build-php-apache build-remserver
 
 
 
+# target: build-php81             - Build images php-81 (option="--no-cache").
+.PHONY: build-php81
+build-php81: update
+	@$(call HELPTEXT,$@)
+	$(D) build $(options) --file php81/cli/Dockerfile  \
+		--tag anax/dev:php81                \
+		--tag anax/dev:php81-cli            \
+		php81/cli
+	$(D) build $(options) --file php81/apache/Dockerfile  \
+		--tag anax/dev:php81-apache            \
+		php81/apache
+
+
+
 # target: build-php80             - Build images php-80 (option="--no-cache").
 .PHONY: build-php80
 build-php80: update
@@ -124,14 +138,18 @@ build-php56: update
 .PHONY: build-php-cli
 build-php-cli: update
 	@$(call HELPTEXT,$@)
+	$(D) build $(options) --file php81/cli/Dockerfile  \
+		--tag anax/dev:latest               \
+		--tag anax/dev:cli                  \
+		--tag anax/dev:latest-cli           \
+		--tag anax/dev:php81                \
+		--tag anax/dev:php81-cli            \
+		php81/cli
 	$(D) build $(options) --file php80/cli/Dockerfile  \
 		--tag anax/dev:php80                \
 		--tag anax/dev:php80-cli            \
 		php80/cli
 	$(D) build $(options) --file php74/cli/Dockerfile  \
-		--tag anax/dev:latest               \
-		--tag anax/dev:cli                  \
-		--tag anax/dev:latest-cli           \
 		--tag anax/dev:php74                \
 		--tag anax/dev:php74-cli            \
 		php74/cli
@@ -162,12 +180,15 @@ build-php-cli: update
 .PHONY: build-php-apache
 build-php-apache: update
 	@$(call HELPTEXT,$@)
+	$(D) build $(options) --file php81/apache/Dockerfile  \
+		--tag anax/dev:apache		           \
+		--tag anax/dev:latest-apache           \
+		--tag anax/dev:php81-apache            \
+		php81/apache
 	$(D) build $(options) --file php80/apache/Dockerfile  \
 		--tag anax/dev:php80-apache            \
 		php80/apache
 	$(D) build $(options) --file php74/apache/Dockerfile  \
-		--tag anax/dev:apache		           \
-		--tag anax/dev:latest-apache           \
 		--tag anax/dev:php74-apache            \
 		php74/apache
 	$(D) build $(options) --file php73/apache/Dockerfile  \
@@ -211,6 +232,8 @@ push:
 	$(D) push anax/dev:latest
 	$(D) push anax/dev:cli
 	$(D) push anax/dev:latest-cli
+	$(D) push anax/dev:php81
+	$(D) push anax/dev:php81-cli
 	$(D) push anax/dev:php80
 	$(D) push anax/dev:php80-cli
 	$(D) push anax/dev:php74
@@ -229,6 +252,7 @@ push:
 	# Apache
 	$(D) push anax/dev:apache
 	$(D) push anax/dev:latest-apache
+	$(D) push anax/dev:php81-apache
 	$(D) push anax/dev:php80-apache
 	$(D) push anax/dev:php74-apache
 	$(D) push anax/dev:php73-apache

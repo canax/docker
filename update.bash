@@ -38,7 +38,7 @@ for version in php56 php70 php71 php72 php73; do
 done
 
 # Dockerfiles for php-cli, from PHP 7.4
-for version in php74 php80; do
+for version in php74 php80 php81; do
     lib="$version/cli"
     target="$lib/Dockerfile"
 
@@ -57,7 +57,7 @@ for version in php74 php80; do
 done
 
 # Dockerfiles for php-apache, from PHP 7.4
-for version in php74 php80; do
+for version in php74 php80 php81; do
     lib="$version/apache"
     target="$lib/Dockerfile"
 
