@@ -41,6 +41,7 @@ RUN set -ex; \
 	\
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
+		libicu-dev \
 		libjpeg-dev \
 		libonig-dev \
 		libpng-dev \
@@ -51,6 +52,7 @@ RUN set -ex; \
 	docker-php-ext-configure gd --with-jpeg --with-webp; \
 	docker-php-ext-install -j "$(nproc)" \
 		gd \
+		intl \
 		mbstring \
 		opcache \
 		pdo_mysql \

@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.6.0 (2022-08-25)
+--------------------
+
+* Added support for php-intl in PHP 81.
+
+
+
 v1.5.0 (2022-03-23)
 --------------------
 
