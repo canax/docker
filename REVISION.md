@@ -3,6 +3,21 @@ Revision history
 
 
 
+v1.8.0 (2023-10-27)
+--------------------
+
+* Add support for PHP82.
+
+
+
+v1.7.0 (2022-08-25)
+--------------------
+
+* Added support for mysqli in PHP81.
+* Prepare to add support for PHP82.
+
+
+
 v1.6.0 (2022-08-25)
 --------------------
 

@@ -78,6 +78,20 @@ build: update build-php-cli build-php-apache build-remserver
 
 
 
+# target: build-php82             - Build images php-82 (option="--no-cache").
+.PHONY: build-php82
+build-php82: update
+	@$(call HELPTEXT,$@)
+	$(D) build $(options) --file php82/cli/Dockerfile  \
+		--tag anax/dev:php82                \
+		--tag anax/dev:php82-cli            \
+		php82/cli
+	$(D) build $(options) --file php82/apache/Dockerfile  \
+		--tag anax/dev:php82-apache            \
+		php82/apache
+
+
+
 # target: build-php81             - Build images php-81 (option="--no-cache").
 .PHONY: build-php81
 build-php81: update
@@ -138,6 +152,10 @@ build-php56: update
 .PHONY: build-php-cli
 build-php-cli: update
 	@$(call HELPTEXT,$@)
+	$(D) build $(options) --file php82/cli/Dockerfile  \
+		--tag anax/dev:php82                \
+		--tag anax/dev:php82-cli            \
+		php82/cli
 	$(D) build $(options) --file php81/cli/Dockerfile  \
 		--tag anax/dev:latest               \
 		--tag anax/dev:cli                  \
@@ -180,6 +198,9 @@ build-php-cli: update
 .PHONY: build-php-apache
 build-php-apache: update
 	@$(call HELPTEXT,$@)
+	$(D) build $(options) --file php82/apache/Dockerfile  \
+		--tag anax/dev:php82-apache            \
+		php82/apache
 	$(D) build $(options) --file php81/apache/Dockerfile  \
 		--tag anax/dev:apache		           \
 		--tag anax/dev:latest-apache           \
@@ -229,6 +250,8 @@ build-remserver: update
 push:
 	@$(call HELPTEXT,$@)
 	# cli
+	$(D) push anax/dev:php82
+	$(D) push anax/dev:php82-cli
 	$(D) push anax/dev:latest
 	$(D) push anax/dev:cli
 	$(D) push anax/dev:latest-cli
@@ -250,6 +273,7 @@ push:
 	$(D) push anax/dev:php56-cli
 
 	# Apache
+	$(D) push anax/dev:php82-apache
 	$(D) push anax/dev:apache
 	$(D) push anax/dev:latest-apache
 	$(D) push anax/dev:php81-apache

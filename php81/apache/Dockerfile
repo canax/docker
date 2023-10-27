@@ -54,6 +54,7 @@ RUN set -ex; \
 		gd \
 		intl \
 		mbstring \
+		mysqli \
 		opcache \
 		pdo_mysql \
 		pdo_sqlite \

@@ -47,5 +47,5 @@ make build-remserver options="--no-cache"
 
 ```
  .
-..:  Copyright (c) 2017-2021 Mikael Roos, mos@dbwebb.se
+..:  Copyright (c) 2017-2023 Mikael Roos, mos@dbwebb.se
 ```
